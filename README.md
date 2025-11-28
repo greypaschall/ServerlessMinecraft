@@ -7,17 +7,23 @@ Flow:
 _________
 
 -Player connects to listener IP
+
 -Ingame they will see a motd saying "Starting up please wait ~2 minutes"
+
 -Listener watches for valid TCP handshake and calls AWS Lambda function to start the server from a launch template
+
 -The launch template bootstraps the instance:
---restoring world data from an S3 bucket
---start the minecraft server with a custom launch configuration in a tmux session
---creates a cloudwatch metric if one does not exist to publish active players report to AWS
---dynamically creates a script to report active players connected
---runs reportplayers script in a crontab every minute
+  -restoring world data from an S3 bucket
+  -start the minecraft server with a custom launch configuration in a tmux session
+  -creates a cloudwatch metric if one does not exist to publish active players report to AWS
+  -dynamically creates a script to report active players connected
+  -runs reportplayers script in a crontab every minute
+  
 -Player reconnects to listener IP and is tunneled to the IP of the spun up instance
 -Player disconnects
+
 -After ~4 minutes the metric has reported 0 active players and the Alarm goes off
+
 -Alarm triggers SNS to call the lambda function to save the world back to S3, terminate the server instance, and delete the cloudwatch alarm
   
 
