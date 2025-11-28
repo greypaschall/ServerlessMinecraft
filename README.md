@@ -13,11 +13,11 @@ _________
 -Listener watches for valid TCP handshake and calls AWS Lambda function to start the server from a launch template
 
 -The launch template bootstraps the instance:
-  -restoring world data from an S3 bucket
-  -start the minecraft server with a custom launch configuration in a tmux session
-  -creates a cloudwatch metric if one does not exist to publish active players report to AWS
-  -dynamically creates a script to report active players connected
-  -runs reportplayers script in a crontab every minute
+  - restoring world data from an S3 bucket
+  - start the minecraft server with a custom launch configuration in a tmux session
+  - creates a cloudwatch metric if one does not exist to publish active players report to AWS
+  - dynamically creates a script to report active players connected
+  - runs reportplayers script in a crontab every minute
   
 -Player reconnects to listener IP and is tunneled to the IP of the spun up instance
 -Player disconnects
@@ -38,7 +38,7 @@ ___________
 Active Costs (You are only charged when a player is using the server):
 
 -t3.large EC2 instance ~ $0.0832/hour 
-  -associated EBS volume ~ $0.00088/hour (temporary volume provisioned at startup and deleted at shutdown)
+  - associated EBS volume ~ $0.00088/hour (temporary volume provisioned at startup and deleted at shutdown)
 
 
 *Free Services:
