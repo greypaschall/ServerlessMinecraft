@@ -19,7 +19,8 @@ Flow:
   - runs reportplayers script in a crontab every minute
   
 -Player reconnects to listener IP and is tunneled to the IP of the spun up instance
--Player disconnects
+
+-After all players have disconnected, wait for metric update
 
 -After ~4 minutes the metric has reported 0 active players and the Alarm goes off
 
